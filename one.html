@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王文超 & 王慧卓 · 我们的时光</title>
+  <!-- 柔和的风格，适合纪念、旅行与日常 -->
+  <style>
+    /* 全局重置与字体 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbf7f0;  /* 暖白底色 */
+      font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+      color: #2e241f;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+
+    /* 整体容器，留出呼吸感 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== 头部 · 姓名与纪念日 ===== */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 1rem 0 0.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #4a3b33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 .amp {
+      font-size: 2.4rem;
+      color: #b88b7a;
+      font-weight: 300;
+      margin: 0 0.25rem;
+    }
+
+    .hero .names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .hero .name {
+      font-weight: 500;
+    }
+
+    .hero .subtitle {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      color: #8c6f60;
+      letter-spacing: 0.5px;
+      font-style: italic;
+      border-top: 1px solid #e6d9cf;
+      display: inline-block;
+      padding-top: 1.2rem;
+    }
+
+    /* 装饰性小爱心/圆点 */
+    .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #b88b7a;
+      border-radius: 50%;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== 三个板块的网格 ===== */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 4rem;
+    }
+
+    /* 每个板块卡片 */
+    .card {
+      background: #fffffffa;
+      border-radius: 28px;
+      padding: 2rem 1.5rem 1.8rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03), 0 4px 10px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f0e6de;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 40px rgba(184, 139, 122, 0.08), 0 8px 18px rgba(0, 0, 0, 0.02);
+      border-color: #e3d4c9;
+    }
+
+    /* 卡片标题 */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px dashed #eaded4;
+      padding-bottom: 0.9rem;
+    }
+
+    .card-header .emoji-big {
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .card-header h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #4f3e35;
+      letter-spacing: -0.02em;
+    }
+
+    /* 内容区域 */
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* 文字描述 */
+    .story {
+      font-size: 0.98rem;
+      color: #4a3f38;
+      background: #f9f4ee;
+      padding: 0.9rem 1.2rem;
+      border-radius: 18px;
+      margin-bottom: 0.2rem;
+    }
+
+    .story p {
+      margin-bottom: 0.5rem;
+    }
+
+    .story p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== 图片占位区域 ===== */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 0.9rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .image-placeholder {
+      aspect-ratio: 1 / 1;
+      background: #f2e8e1;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #b8a094;
+      font-size: 0.8rem;
+      text-align: center;
+      border: 2px dashed #dacbc0;
+      transition: all 0.15s ease;
+      padding: 0.3rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      cursor: default;
+    }
+
+    .image-placeholder:hover {
+      background: #f0e2d8;
+      border-color: #cbb3a4;
+      color: #8e6f5e;
+    }
+
+    .image-placeholder span {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+      opacity: 0.7;
+    }
+
+    /* 纪念日特殊样式 */
+    .anniversary-date {
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: #b88b7a;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+      letter-spacing: 1px;
+    }
+
+    .anniversary-label {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: #a48b7d;
+    }
+
+    /* 旅行日记里可以加一点小标签 */
+    .travel-tag {
+      display: inline-block;
+      background: #e8dfd8;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #6e5a4e;
+      margin-right: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 日常部分的 flex 小点缀 */
+    .daily-quote {
+      font-style: italic;
+      color: #9b7f6f;
+      font-size: 0.95rem;
+      border-left: 3px solid #dfcec1;
+      padding-left: 1rem;
+      margin: 0.6rem 0 0.2rem;
+    }
+
+    /* 底部 GitHub 提示（轻量） */
+    .footer-note {
+      text-align: center;
+      color: #b9a69a;
+      font-size: 0.85rem;
+      border-top: 1px solid #ece1d8;
+      padding-top: 2rem;
+      margin-top: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-note a {
+      color: #9d7f6d;
+      text-decoration: none;
+      border-bottom: 1px dotted #d0bcae;
+    }
+
+    .footer-note a:hover {
+      color: #7b5f4e;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero h1 .amp {
+        font-size: 1.8rem;
+      }
+
+      .card {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .card-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .anniversary-date {
+        font-size: 2rem;
+      }
+    }
+
+    /* 为每张卡片添加一点微妙的顶部颜色 */
+    .card:nth-child(1) {
+      border-top: 6px solid #f2d8cd;
+    }
+
+    .card:nth-child(2) {
+      border-top: 6px solid #d9e3db;
+    }
+
+    .card:nth-child(3) {
+      border-top: 6px solid #f0e2d4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="hero">
+      <h1>
+        <span class="names">
+          <span class="name">王文超</span>
+          <span class="amp">&</span>
+          <span class="name">王慧卓</span>
+        </span>
+      </h1>
+      <div class="subtitle">
+        <span class="dot"></span> 2018 · 春 · 我们 <span class="dot"></span>
+      </div>
+    </header>
+
+    <!-- 三大板块 -->
+    <div class="sections-grid">
+      <!-- 结婚纪念 -->
+      <section class="card">
+        <div class="card-header">
+          <span class="emoji-big">💍</span>
+          <h2>结婚纪念</h2>
+        </div>
+        <div class="card-content">
+          <div class="anniversary-date">5月20日</div>
+          <div class="anniversary-label">我们的婚礼日</div>
+          <div class="story">
+            <p>“从那天起，我们有了一个共同的名字。” 每一个五月都值得庆祝。</p>
+          </div>
+          <!-- 图片占位区：后续放结婚照、纪念日晚餐等 -->
+          <div class="image-grid">
+            <div class="image-placeholder"><span>📸</span>结婚照</div>
+            <div class="image-placeholder"><span>📸</span>纪念晚餐</div>
+            <div class="image-placeholder"><span>📸</span>戒指/信物</div>
+          </div>
+          <div style="font-size:0.85rem; color:#b8a094; margin-top:0.2rem;">💡 后续把喜欢的瞬间放进来</div>
+        </div>
+      </section>
+
+      <!-- 旅行日记 -->
+      <section class="card">
+        <div class="card-header">
+          <span class="emoji-big">✈️</span>
+          <h2>旅行日记</h2>
+        </div>
+        <div class="card-content">
+          <div>
+            <span class="travel-tag">大理</span>
+            <span class="travel-tag">京都</span>
+            <span class="travel-tag">海边</span>
+          </div>
+          <div class="story">
+            <p>一起走过的路，看过的云，吹过的风，都收在这里。</p>
+          </div>
+          <!-- 旅行图片占位区，可以放多个旅行照片 -->
+          <div class="image-grid">
+            <div class="image-placeholder"><span>🏞️</span>苍山洱海</div>
+            <div class="image-placeholder"><span>🌸</span>樱花季</div>
+            <div class="image-placeholder"><span>🌊</span>日出</div>
+            <div class="image-placeholder"><span>🚞</span>在路上</div>
+          </div>
+          <div style="font-size:0.85rem; color:#b8a094; margin-top:0.2rem;">更多旅行照片即将补入</div>
+        </div>
+      </section>
+
+      <!-- 日常生活 -->
+      <section class="card">
+        <div class="card-header">
+          <span class="emoji-big">☕</span>
+          <h2>日常生活</h2>
+        </div>
+        <div class="card-content">
+          <div class="story">
+            <p>一茶一饭，晨昏四季。平凡的日子，因为有彼此而闪闪发光。</p>
+          </div>
+          <div class="daily-quote">
+            “今天一起做了饭，你说盐放多了，但全都吃完了。”
+          </div>
+          <!-- 日常生活图片占位 -->
+          <div class="image-grid">
+            <div class="image-placeholder"><span>🍳</span>早餐</div>
+            <div class="image-placeholder"><span>📖</span>共读</div>
+            <div class="image-placeholder"><span>🎬</span>电影夜</div>
+            <div class="image-placeholder"><span>🐱</span>小日常</div>
+          </div>
+          <div style="font-size:0.85rem; color:#b8a094; margin-top:0.2rem;">记录琐碎里的温柔</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 底部小提示，也是github pages的常见风格 -->
+    <div class="footer-note">
+      <p>王文超 & 王慧卓 · 个人网站 · 照片陆续更新中</p>
+      <p style="margin-top: 0.3rem; font-size: 0.8rem;">📷 未来这里会放进我们的回忆</p>
+    </div>
+  </div>
+
+  <!-- 这是一个干净的、可扩展的静态页面。所有图片占位均可以直接替换成 <img> 标签 -->
+</body>
+</html>
